@@ -1,15 +1,15 @@
 {
-  "name": "magnet-module-boilerplate",
+  "name": "magnet-acl",
   "version": "0.1.0",
-  "description": "Magnet adapter for boilerplate",
+  "description": "Magnet adapter for acl",
   "keywords": [
     "magnet",
     "magnetjs",
-    "module-boilerplate"
+    "acl"
   ],
-  "homepage": "https://github.com/magnetjs/magnet-module-boilerplate#readme",
+  "homepage": "https://github.com/magnetjs/magnet-acl#readme",
   "bugs": {
-    "url": "https://github.com/magnetjs/magnet-module-boilerplate/issues"
+    "url": "https://github.com/magnetjs/magnet-acl/issues"
   },
   "license": "MIT",
   "author": "Kieve Chua <kievechua@gmail.com> (https://github.com/kievechua)",
@@ -19,7 +19,7 @@
     "dist"
   ],
   "main": "dist/index.js",
-  "repository": "magnetjs/magnet-module-boilerplate",
+  "repository": "magnetjs/magnet-acl",
   "scripts": {
     "build": "tsc",
     "dist": "npm run build && npm publish",
@@ -30,6 +30,7 @@
     "watch-all": "concurrently \"npm run watch\" \"npm run watch-test\""
   },
   "dependencies": {
+    "acl": "^0.4.10",
     "magnet-core": "^3.3.0"
   },
   "devDependencies": {
