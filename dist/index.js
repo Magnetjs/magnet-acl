@@ -28,6 +28,15 @@ class Acl extends module_1.Module {
                     backend = new acl_1.memoryBackend();
                 }
                 this.app.nodeAcl = new NodeAcl(backend);
+                if (config.allow) {
+                    this.log.info(config.allow);
+                    yield this.app.nodeAcl.allow(config.allow);
+                }
+                if (config.removeAllow.length) {
+                    for (const removeAllow of config.removeAllow) {
+                        yield this.app.nodeAcl.removeAllow.apply(this.app.nodeAcl, removeAllow);
+                    }
+                }
             }
             catch (err) {
                 this.log.error(err);

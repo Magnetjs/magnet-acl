@@ -30,6 +30,17 @@ export default class Acl extends Module {
       }
 
       this.app.nodeAcl = new NodeAcl(backend)
+
+      if (config.allow) {
+        this.log.info(config.allow)
+        await this.app.nodeAcl.allow(config.allow)
+      }
+
+      if (config.removeAllow.length) {
+        for (const removeAllow of config.removeAllow) {
+          await this.app.nodeAcl.removeAllow.apply(this.app.nodeAcl, removeAllow)
+        }
+      }
     } catch (err) {
       this.log.error(err)
 
