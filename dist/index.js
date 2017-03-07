@@ -29,7 +29,6 @@ class Acl extends module_1.Module {
                 }
                 this.app.nodeAcl = new NodeAcl(backend);
                 if (config.allow) {
-                    this.log.info(config.allow);
                     yield this.app.nodeAcl.allow(config.allow);
                 }
                 if (config.removeAllow.length) {
