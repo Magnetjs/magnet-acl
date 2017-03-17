@@ -27,13 +27,13 @@ class MagnetAcl extends module_1.Module {
                 else if (this.config.memory) {
                     backend = new acl_1.memoryBackend();
                 }
-                this.app.nodeAcl = new NodeAcl(backend);
+                this.insert(new NodeAcl(backend));
                 if (this.config.allow) {
-                    yield this.app.nodeAcl.allow(this.config.allow);
+                    yield this.app.acl.allow(this.config.allow);
                 }
                 if (this.config.removeAllow.length) {
                     for (const removeAllow of this.config.removeAllow) {
-                        yield this.app.nodeAcl.removeAllow.apply(this.app.nodeAcl, removeAllow);
+                        yield this.app.acl.removeAllow.apply(this.app.acl, removeAllow);
                     }
                 }
             }
