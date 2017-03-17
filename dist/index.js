@@ -11,28 +11,28 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const module_1 = require("magnet-core/module");
 const NodeAcl = require("acl");
 const acl_1 = require("acl");
-const nodeAcl_1 = require("./config/nodeAcl");
-class Acl extends module_1.Module {
+class MagnetAcl extends module_1.Module {
+    get moduleName() { return 'acl'; }
+    get defaultConfig() { return __dirname; }
     setup() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const config = this.prepareConfig('nodeAcl', nodeAcl_1.default);
-                let backend = config.backend;
-                if (config.redis) {
-                    backend = new acl_1.redisBackend(config.magnet ? this.app[config.magnet] : config.redis, config.prefix);
+                let backend = this.config.backend;
+                if (this.config.redis) {
+                    backend = new acl_1.redisBackend(this.config.magnet ? this.app[this.config.magnet] : this.config.redis, this.config.prefix);
                 }
-                else if (config.mongodb) {
-                    backend = new acl_1.mongodbBackend(config.magnet ? this.app[config.magnet] : config.mongodb, config.prefix);
+                else if (this.config.mongodb) {
+                    backend = new acl_1.mongodbBackend(this.config.magnet ? this.app[this.config.magnet] : this.config.mongodb, this.config.prefix);
                 }
-                else if (config.memory) {
+                else if (this.config.memory) {
                     backend = new acl_1.memoryBackend();
                 }
                 this.app.nodeAcl = new NodeAcl(backend);
-                if (config.allow) {
-                    yield this.app.nodeAcl.allow(config.allow);
+                if (this.config.allow) {
+                    yield this.app.nodeAcl.allow(this.config.allow);
                 }
-                if (config.removeAllow.length) {
-                    for (const removeAllow of config.removeAllow) {
+                if (this.config.removeAllow.length) {
+                    for (const removeAllow of this.config.removeAllow) {
                         yield this.app.nodeAcl.removeAllow.apply(this.app.nodeAcl, removeAllow);
                     }
                 }
@@ -44,5 +44,5 @@ class Acl extends module_1.Module {
         });
     }
 }
-exports.default = Acl;
+exports.default = MagnetAcl;
 //# sourceMappingURL=index.js.map

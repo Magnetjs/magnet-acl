@@ -6,37 +6,36 @@ import {
   memoryBackend as MemoryBackend
 } from 'acl'
 
-import defaultConfig from './config/nodeAcl'
+export default class MagnetAcl extends Module {
+  get moduleName () { return 'acl' }
+  get defaultConfig () { return __dirname }
 
-export default class Acl extends Module {
   async setup () {
     try {
-      const config = this.prepareConfig('nodeAcl', defaultConfig)
+      let backend = this.config.backend
 
-      let backend = config.backend
-
-      if (config.redis) {
+      if (this.config.redis) {
         backend = new RedisBackend(
-          config.magnet ? this.app[config.magnet] : config.redis,
-          config.prefix
+          this.config.magnet ? this.app[this.config.magnet] : this.config.redis,
+          this.config.prefix
         )
-      } else if (config.mongodb) {
+      } else if (this.config.mongodb) {
         backend = new MongodbBackend(
-          config.magnet ? this.app[config.magnet] : config.mongodb,
-          config.prefix
+          this.config.magnet ? this.app[this.config.magnet] : this.config.mongodb,
+          this.config.prefix
         )
-      } else if (config.memory) {
+      } else if (this.config.memory) {
         backend = new MemoryBackend()
       }
 
       this.app.nodeAcl = new NodeAcl(backend)
 
-      if (config.allow) {
-        await this.app.nodeAcl.allow(config.allow)
+      if (this.config.allow) {
+        await this.app.nodeAcl.allow(this.config.allow)
       }
 
-      if (config.removeAllow.length) {
-        for (const removeAllow of config.removeAllow) {
+      if (this.config.removeAllow.length) {
+        for (const removeAllow of this.config.removeAllow) {
           await this.app.nodeAcl.removeAllow.apply(this.app.nodeAcl, removeAllow)
         }
       }
