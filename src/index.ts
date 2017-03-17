@@ -28,15 +28,15 @@ export default class MagnetAcl extends Module {
         backend = new MemoryBackend()
       }
 
-      this.app.nodeAcl = new NodeAcl(backend)
+      this.insert(new NodeAcl(backend))
 
       if (this.config.allow) {
-        await this.app.nodeAcl.allow(this.config.allow)
+        await this.app.acl.allow(this.config.allow)
       }
 
       if (this.config.removeAllow.length) {
         for (const removeAllow of this.config.removeAllow) {
-          await this.app.nodeAcl.removeAllow.apply(this.app.nodeAcl, removeAllow)
+          await this.app.acl.removeAllow.apply(this.app.acl, removeAllow)
         }
       }
     } catch (err) {
