@@ -23,4 +23,4 @@ exports.default = {
     // https://github.com/OptimalBits/node_acl#removeallow-role-resources-permissions-functionerr-
     removeAllow: [],
 };
-//# sourceMappingURL=nodeAcl.js.map
+//# sourceMappingURL=acl.js.map
