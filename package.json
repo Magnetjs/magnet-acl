@@ -1,6 +1,6 @@
 {
   "name": "magnet-acl",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Magnet adapter for acl",
   "keywords": [
     "magnet",
@@ -34,14 +34,11 @@
     "magnet-core": "^3.3.0"
   },
   "devDependencies": {
-    "@types/node": "^7.0.5",
-    "concurrently": "^3.3.0",
-    "nodemon": "^1.9.1",
-    "standard": "^8.6.0",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.5.1",
-    "ts-node": "^2.1.0",
-    "typescript": "^2.2.1"
+    "fly": "^2.0.5",
+    "fly-clear": "^1.0.1",
+    "fly-esnext": "^2.0.1",
+    "fly-typescript": "^1.0.0",
+    "fly-watch": "^1.1.1"
   },
   "engines": {
     "node": ">=6.9.5"
