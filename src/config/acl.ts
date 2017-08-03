@@ -3,6 +3,7 @@
 
 // const backend = new RedisBackend(client)
 
+// https://github.com/OptimalBits/node_acl/issues/38
 export default {
   prefix: 'acl',
 
