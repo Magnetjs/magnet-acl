@@ -1,6 +1,6 @@
 {
   "name": "magnet-acl",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "description": "Magnet adapter for acl",
   "keywords": [
     "magnet",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "acl": "^0.4.10",
-    "magnet-core": "^3.3.0"
+    "magnet-core": "^4.0.1"
   },
   "devDependencies": {
     "fly": "^2.0.5",
