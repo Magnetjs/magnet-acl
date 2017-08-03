@@ -7,8 +7,10 @@ import {
 } from 'acl'
 
 export default class MagnetAcl extends Module {
-  get moduleName () { return 'acl' }
-  get defaultConfig () { return __dirname }
+  init () {
+    this.moduleName = 'acl'
+    this.defaultConfig = __dirname
+  }
 
   async setup () {
     try {
