@@ -1,0 +1,12 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - magnet-core > lodash:
+        patched: '2023-06-02T14:27:39.715Z'
+    - acl > lodash:
+        patched: '2023-06-02T14:27:39.715Z'
+    - acl > async > lodash:
+        patched: '2023-06-02T14:27:39.715Z'
